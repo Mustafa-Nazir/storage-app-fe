@@ -2,11 +2,14 @@
 import Button from "@/components/ui/button";
 import Input from "@/components/ui/input";
 import TextButton from "@/components/ui/textButton";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const router = useRouter();
     return (
         <div className="w-full h-[100vh] flex">
             <div className="hidden sm:block sm:w-[45%] flex justify-center bg-gradient-to-b from-main-dark to-main-light">
@@ -38,7 +41,7 @@ export default function Login() {
                         <div className="w-[150px]"><Button name="Giriş Yap" onClick={() => { }} /></div>
                     </div>
                 </div>
-                <div className="flex"><span className="mr-1">Hesabın yok mu?</span><TextButton name="Kaydol" onClick={()=>{}} textColor="text-purple-dark"/></div>
+                <div className="flex"><span className="mr-1">Hesabın yok mu?</span><TextButton name="Kaydol" onClick={()=>{router.push("/auth/register")}} textColor="text-purple-dark"/></div>
             </div>
         </div>
     );
