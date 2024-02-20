@@ -1,3 +1,3 @@
 export default interface IIcon{
-    color?:string;
+    className?:string;
 }
