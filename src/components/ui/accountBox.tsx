@@ -2,6 +2,7 @@ import { useState } from "react";
 import AccountIcon from "../icons/accountIcon";
 import SettingsIcon from "../icons/settingsIcon";
 import BackgroundCover from "./backgroundCover";
+import { useRouter } from "next/navigation";
 
 interface features {
     name: string,
@@ -11,12 +12,20 @@ interface features {
 const AccountBox = (features: features) => {
     const [isClicked, setIsClicked] = useState(false);
 
+    const router = useRouter();
+
     const toggle = () => {
         setIsClicked(!isClicked);
     }
 
     const closeOnLeave = () => {
         if(isClicked) setIsClicked(false);
+    }
+
+    const logout = () => {
+        window.localStorage.removeItem("token");
+        router.push("/auth/login");
+        return;
     }
 
     return (
@@ -27,7 +36,7 @@ const AccountBox = (features: features) => {
                 <div className="px-2 cursor-pointer" onClick={toggle}><SettingsIcon className="fill-gray-500" /></div>
             </div>
             {isClicked && (<div className="absolute right-4 top-13 rounded-lg border-2 border-gray-300 overflow-hidden">
-                    <div className="bg-white w-full px-4 py-1 hover:bg-gray-100 cursor-pointer select-none">Çıkış Yap</div>
+                    <div onClick={logout} className="bg-white w-full px-4 py-1 hover:bg-gray-100 cursor-pointer select-none">Çıkış Yap</div>
                 </div>)}
         </div>
 
