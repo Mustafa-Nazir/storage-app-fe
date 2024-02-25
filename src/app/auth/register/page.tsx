@@ -36,7 +36,10 @@ export default function Register() {
         }
 
         const data = await AuthService.Register(registerData);
-        if (!data.success) toast.error(data.message);
+        if (!data.success) {
+            toast.error(data.message);
+            return;
+        }
         toast.success(data.message);
         clearInputs();
     }
