@@ -9,6 +9,12 @@ apiClient.interceptors.response.use((res) => { return res }, (error) => {
         localStorage.removeItem("token");
         window.location.reload();
     }
+
+    if (error.response && error.response.status % 400 <= 99) {
+        return error.response;
+    } else {
+        return Promise.reject(error);
+    }
 })
 
 apiClient.interceptors.request.use((config) => {
