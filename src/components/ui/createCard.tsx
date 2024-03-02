@@ -1,7 +1,12 @@
 import { useState } from "react";
 import Popup from "./popup";
+import NewLibraryFields from "./newLibraryFields";
 
-const CreateCard = () => {
+interface features {
+    setLibraries:Function,
+}
+
+const CreateCard = (features:features) => {
 
     const [isClicked , setIsClicked] = useState(false);
 
@@ -19,8 +24,8 @@ const CreateCard = () => {
                 </div>
 
             </div>
-            <Popup isClicked={isClicked} setIsClicked={setIsClicked} title="Popup Title" >
-                <div>Popup content</div>
+            <Popup isClicked={isClicked} setIsClicked={setIsClicked} title="Yeni kütüphane oluştur" >
+                <NewLibraryFields setIsClicked={setIsClicked} setLibraries={features.setLibraries}/>
             </Popup>
         </>
 

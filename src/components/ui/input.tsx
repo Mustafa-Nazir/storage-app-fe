@@ -7,7 +7,8 @@ interface features {
     placeholderColor?: string,
     errorState?: boolean,
     errorMessage?:string,
-    type:string
+    type:string,
+    disabled?:boolean
 }
 
 const Input = (features: features) => {
@@ -22,7 +23,9 @@ const Input = (features: features) => {
                     onFocus={() => setOnFocus(true)}
                     onBlur={() => setOnFocus(false)}
                     onInput={e => features.setValue((e.target as HTMLInputElement).value)}
-                    value={features.value} />
+                    value={features.value}
+                    disabled={features.disabled || false}
+                     />
             </div>
             {features.errorState && <div className="pl-2 pt-0.5 text-red-500">{features.errorMessage}</div>}
         </div>
