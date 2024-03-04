@@ -7,7 +7,7 @@ const Header = () => {
         <div>
             <div className="flex justify-end px-2 pt-2 mr-1 mt-2">
                 <Notification />
-                <AccountBox name="Example" lastName="User" />
+                <AccountBox/>
             </div>
         </div>
 
