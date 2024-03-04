@@ -28,7 +28,7 @@ export default function Library() {
                 <div className="grid items-center justify-items-center grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 h-[240px] overflow-x-auto">
                     {libraries?.map((lib,index) => {
                         return (
-                            <LibraryCard key={index} name={lib.name}/>
+                            <LibraryCard key={index} name={lib.name} id={lib._id as string}/>
                         )
                     })}
                     <CreateCard setLibraries={setLibraries}/>
