@@ -1,3 +1,4 @@
+import Header from "@/components/ui/header";
 import Sidebar from "@/components/ui/sidebar";
 
 export default function ApplicationLayout({
@@ -9,7 +10,8 @@ export default function ApplicationLayout({
     return (
         <div className="flex h-[100vh] bg-main">
             <Sidebar />
-            <div>
+            <div className="flex-grow flex flex-col">
+                <Header/>
                 {children}
             </div>
         </div>
