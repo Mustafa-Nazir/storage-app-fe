@@ -10,7 +10,7 @@ export default function ApplicationLayout({
     return (
         <div className="flex h-[100vh] bg-main">
             <Sidebar />
-            <div className="flex-grow flex flex-col">
+            <div className="flex-grow flex flex-col overflow-x-auto">
                 <Header/>
                 {children}
             </div>
