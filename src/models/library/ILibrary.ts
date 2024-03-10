@@ -4,9 +4,11 @@ export default interface ILibrary{
     ownerId:string,
     sizeGb:number,
     roles?:{
+        _id?:string,
         name:string
     }[],
     departments?:{
+        _id?:string,
         name:string
     }[]
 }
