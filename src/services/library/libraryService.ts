@@ -30,4 +30,10 @@ export default class LibraryService{
         const data:IResponseModel = await apiClient.patch(url,library).then(res=>res.data);
         return data;
     }
+
+    public static async UserControlByLibraryId(libraryId:string):Promise<IResponseModel>{
+        const url = `${this.baseUrl}userControlByLibraryId/${libraryId}`;
+        const data:IResponseModel = await apiClient.get(url).then(res=>res.data);
+        return data;
+    }
 }
