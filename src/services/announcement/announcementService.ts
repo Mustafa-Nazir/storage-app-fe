@@ -1,5 +1,6 @@
 import { IAnnouncement } from "@/models/announcement/IAnnouncement";
 import IDataResponseModel from "@/models/responseModels/IDataResponseModel";
+import IResponseModel from "@/models/responseModels/IResponseModel";
 import apiClient from "@/utilities/axios/customAxios";
 
 export default class AnnouncementService{
@@ -14,6 +15,12 @@ export default class AnnouncementService{
     public static async Add(announcement:IAnnouncement):Promise<IDataResponseModel<string>>{
         const url = this.baseUrl + "add";
         const data:IDataResponseModel<string> = await apiClient.post(url,announcement).then(res => res.data);
+        return data;
+    }
+
+    public static async DeleteById(id:string):Promise<IResponseModel>{
+        const url = `${this.baseUrl}delete/${id}`;
+        const data:IResponseModel = await apiClient.delete(url).then(res => res.data);
         return data;
     }
 }
