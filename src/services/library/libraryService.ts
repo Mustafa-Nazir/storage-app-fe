@@ -1,4 +1,5 @@
 import ILibrary from "@/models/library/ILibrary";
+import IUserLibraryDto from "@/models/library/IUserLibraryDto";
 import IDataResponseModel from "@/models/responseModels/IDataResponseModel";
 import IResponseModel from "@/models/responseModels/IResponseModel";
 import apiClient from "@/utilities/axios/customAxios";
@@ -34,6 +35,12 @@ export default class LibraryService{
     public static async UserControlByLibraryId(libraryId:string):Promise<IResponseModel>{
         const url = `${this.baseUrl}userControlByLibraryId/${libraryId}`;
         const data:IResponseModel = await apiClient.get(url).then(res=>res.data);
+        return data;
+    }
+
+    public static async GetUserDepartmentAndRole(libraryId:string):Promise<IDataResponseModel<IUserLibraryDto>>{
+        const url = `${this.baseUrl}getUserDepartmentAndRole/${libraryId}`;
+        const data:IDataResponseModel<IUserLibraryDto> = await apiClient.get(url).then(res=>res.data);
         return data;
     }
 }
