@@ -1,8 +1,15 @@
+"use client"
 import Container from "@/components/ui/container";
 import DepartmentAdd from "@/components/ui/departmentAdd";
 import PersonAdd from "@/components/ui/personAdd";
+import { changePageName } from "@/utilities/redux/slices/pageNameSlice";
+import store from "@/utilities/redux/store";
+import { useEffect } from "react";
 
 export default function Settings() {
+    useEffect(()=>{
+        store.dispatch(changePageName("Ayarlar"));
+    },[])
     return (
         <Container>
             <div className="flex justify-between items-center px-3">

@@ -1,5 +1,5 @@
 "use client"
-import Header from "@/components/ui/header";
+import LibraryHeader from "@/components/ui/libraryHeader";
 import Sidebar from "@/components/ui/sidebar";
 import LibraryService from "@/services/library/libraryService";
 import { addUserLibraryInfo } from "@/utilities/redux/slices/userLibraryInfoSlice";
@@ -41,7 +41,7 @@ export default function ApplicationLayout({
         <div className="flex h-[100vh] bg-main">
             <Sidebar />
             <div className="flex-grow flex flex-col overflow-x-auto">
-                <Header/>
+                <LibraryHeader/>
                 {children}
             </div>
         </div>

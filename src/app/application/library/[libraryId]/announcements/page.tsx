@@ -6,13 +6,19 @@ import DepartmentAnnouncement from "@/components/ui/departmentAnnouncement";
 import GeneralAnnouncement from "@/components/ui/generalAnnouncement";
 import { IAnnouncement } from "@/models/announcement/IAnnouncement";
 import AnnouncementType from "@/utilities/constants/announcementType";
-import { useState } from "react";
+import { changePageName } from "@/utilities/redux/slices/pageNameSlice";
+import store from "@/utilities/redux/store";
+import { useEffect, useState } from "react";
 
 export default function Announcements() {
     const [announcements, setAnnouncements] = useState([] as IAnnouncement[]);
     const [announcementType, setAnnouncementType] = useState(AnnouncementType.general);
     const [isClickedToAdd , setIsClickedToAdd] = useState(false);
     const [category , setCategory] = useState({} as {_id:string,name:string});
+
+    useEffect(()=>{
+        store.dispatch(changePageName("Duyurular"));
+    },[])
 
     const onclickGeneral = () => {
         setAnnouncementType(AnnouncementType.general);
