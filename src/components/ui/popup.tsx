@@ -19,7 +19,7 @@ const Popup = (features:features) => {
                     <div className="font-bold">{features.title}</div>
                     <div onClick={closePopup} className="font-bold text-red-500 cursor-pointer select-none">X</div>
                 </div>
-                <div className="m-1 px-4 mb-3">
+                <div className="m-1 px-4 mb-3 max-h-96 overflow-y-auto">
                     {features.children}
                 </div>
             </div>
