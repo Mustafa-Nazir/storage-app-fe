@@ -3,13 +3,14 @@ import {useState } from "react";
 import Input from "./input";
 import Popup from "./popup";
 import Button from "./button";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { toast } from "react-toastify";
 import { IAnnouncement } from "@/models/announcement/IAnnouncement";
 import IUserInfo from "@/models/user/IUserInfo";
 import { useSelector } from "react-redux";
 import AnnouncementService from "@/services/announcement/announcementService";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 interface features {
     setIsClicked: Function,
