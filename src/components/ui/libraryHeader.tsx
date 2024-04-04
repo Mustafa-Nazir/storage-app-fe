@@ -3,6 +3,7 @@ import Header from "./header";
 import { useSelector } from "react-redux";
 import IUserLibraryDto from "@/models/library/IUserLibraryDto";
 import { useEffect, useState } from "react";
+import Roles from "@/utilities/constants/roles";
 
 const LibraryHeader = () => {
     const [role , setRole] = useState("");
@@ -20,7 +21,7 @@ const LibraryHeader = () => {
     const fillStates = () => {
         if(!userInfo?.name || !userLibraryInfo?.role?.name) return;
         setRole(userLibraryInfo.role.name);
-        setDepartment(userLibraryInfo.departments.length > 1 ? "-" : userLibraryInfo?.departments[0].name)
+        setDepartment(userLibraryInfo.role.name == Roles.owner ? "-" : userLibraryInfo.departments[0].name)
         setEmail(userInfo.email)
     }
 
