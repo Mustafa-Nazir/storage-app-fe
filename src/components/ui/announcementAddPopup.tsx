@@ -46,7 +46,7 @@ const AnnouncementAddPopup = (features: features) => {
         }
 
         const result = await AnnouncementService.Add(data);
-        if(!result.success) toast.error(result.message);
+        if(!result.success) return toast.error(result.message);
         toast.success(result.message);
         features.setIsClicked(false);
         data._id = result.data;

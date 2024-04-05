@@ -28,7 +28,7 @@ const AnnouncementTable = (features: features) => {
 
     const onClickDelete = async (id: string) => {
         const result = await deleteAnnouncement(id);
-        if (!result.success) toast.error(result.message);
+        if (!result.success) return toast.error(result.message);
         const newAnnouncements = features.announcements.filter(a => a._id != id);
         features.setAnnouncements(newAnnouncements);
         toast.success(result.message);
