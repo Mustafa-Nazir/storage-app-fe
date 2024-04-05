@@ -11,7 +11,8 @@ const Folder = (features:features) => {
     const [hover,setHover] = useState(false);
     const router = useRouter();
     const redirect = () => {
-        const path = `${window.location.pathname}/${features.folderId}`;
+        const basePath = window.location.pathname.split("/").slice(0,5).join("/");
+        const path = `${basePath}/${features.folderId}`;
         router.push(path);
     }
     return (
