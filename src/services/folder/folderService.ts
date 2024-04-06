@@ -17,4 +17,10 @@ export default class FolderService{
         const data:IDataResponseModel<IFolder[]> = await apiClient.get(url).then(res => res.data);
         return data;
     }
+
+    public static async GetFolderNameById(id:string):Promise<IDataResponseModel<string>>{
+        const url = `${this.baseUrl}getFolderNameById/${id}`;
+        const data:IDataResponseModel<string> = await apiClient.get(url).then(res => res.data);
+        return data;
+    }
 }
