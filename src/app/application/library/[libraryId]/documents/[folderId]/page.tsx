@@ -4,6 +4,8 @@ import Folder from "@/components/ui/folder";
 import FolderPageHeader from "@/components/ui/folderPageHeader";
 import IFolder from "@/models/folder/IFolder";
 import FolderService from "@/services/folder/folderService";
+import { changePageName } from "@/utilities/redux/slices/pageNameSlice";
+import store from "@/utilities/redux/store";
 import { useEffect, useState } from "react";
 
 export default function FolderPage({ params }: { params: { folderId: string } }) {
@@ -11,6 +13,7 @@ export default function FolderPage({ params }: { params: { folderId: string } })
 
     useEffect(()=>{
         getFolders();
+        store.dispatch(changePageName("Belgeler"));
     },[])
     
     const mapFolders = () => {
