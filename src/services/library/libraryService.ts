@@ -1,4 +1,6 @@
 import ILibrary from "@/models/library/ILibrary";
+import ILibraryInfoDto from "@/models/library/ILibraryInfoDto";
+import ILibraryUsersDto from "@/models/library/ILibraryUsersDto";
 import IUserLibraryDto from "@/models/library/IUserLibraryDto";
 import IDataResponseModel from "@/models/responseModels/IDataResponseModel";
 import IResponseModel from "@/models/responseModels/IResponseModel";
@@ -41,6 +43,18 @@ export default class LibraryService{
     public static async GetUserDepartmentAndRole(libraryId:string):Promise<IDataResponseModel<IUserLibraryDto>>{
         const url = `${this.baseUrl}getUserDepartmentAndRole/${libraryId}`;
         const data:IDataResponseModel<IUserLibraryDto> = await apiClient.get(url).then(res=>res.data);
+        return data;
+    }
+
+    public static async GetLibraryUsersById(libraryId:string):Promise<IDataResponseModel<ILibraryUsersDto>>{
+        const url = `${this.baseUrl}getLibraryUsersById/${libraryId}`;
+        const data:IDataResponseModel<ILibraryUsersDto> = await apiClient.get(url).then(res=>res.data);
+        return data;
+    }
+
+    public static async GetLibraryInfosById(libraryId:string):Promise<IDataResponseModel<ILibraryInfoDto>>{
+        const url = `${this.baseUrl}getLibraryInfoById/${libraryId}`;
+        const data:IDataResponseModel<ILibraryInfoDto> = await apiClient.get(url).then(res=>res.data);
         return data;
     }
 }
