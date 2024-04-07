@@ -1,0 +1,18 @@
+<svg width="560" height="327" viewBox="0 0 560 327" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M116.5 326.5H73.5C56.5 325 19 310.8 5 266C-9 221.2 12.1667 178 24.5 162C37.5 146.167 73.5 114.5 129.5 124C129.5 78.8 167.5 39.8333 186.5 26C199.333 17.3333 232.7 0.1 263.5 0.5C302 1 333.5 15.5 357.5 38.5C376.7 56.9 384.833 76.5 386.5 84C408 79.8333 456.7 83.4 479.5 131C518.3 138.2 543.333 173 551 189.5C556.667 202.833 565.1 237.7 553.5 270.5C542.3 305.3 506.833 322 490.5 326L116.5 326.5Z" fill="url(#paint0_linear_4_94)"/>
+<path d="M414.5 225H112.5C101 225 81.3027 233.5 80.7028 252C80.2165 267 88.5 280 112.5 280H458.5" stroke="white" stroke-width="25" stroke-linecap="round"/>
+<path d="M248 57C224.333 61.5 177 84.4 177 140" stroke="white" stroke-width="25" stroke-linecap="round"/>
+<circle cx="177.5" cy="252.5" r="7.5" fill="white"/>
+<circle cx="218.5" cy="252.5" r="7.5" fill="white"/>
+<circle cx="241.5" cy="252.5" r="7.5" fill="white"/>
+<circle cx="7.5" cy="7.5" r="7.5" transform="matrix(-1 0 0 1 370 245)" fill="white"/>
+<circle cx="7.5" cy="7.5" r="7.5" transform="matrix(-1 0 0 1 329 245)" fill="white"/>
+<circle cx="7.5" cy="7.5" r="7.5" transform="matrix(-1 0 0 1 306 245)" fill="white"/>
+<path d="M258 253H282.5" stroke="white" stroke-width="9" stroke-linecap="round"/>
+<defs>
+<linearGradient id="paint0_linear_4_94" x1="15" y1="53" x2="582.5" y2="320" gradientUnits="userSpaceOnUse">
+<stop offset="0.0980605" stop-color="#67A1E4"/>
+<stop offset="0.605858" stop-color="#4655F1"/>
+</linearGradient>
+</defs>
+</svg>

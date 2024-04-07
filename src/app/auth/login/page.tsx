@@ -9,6 +9,7 @@ import loginImge from "@/../../public/login.png"
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import LogoFull from "@/components/ui/logoFull";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -46,12 +47,16 @@ export default function Login() {
     return (
         <div className="w-full h-[100vh] flex">
             <div className="hidden sm:flex sm:w-[55%] justify-center bg-main">
+                <div className="absolute top-4 left-4">
+                    <LogoFull width={65}/>
+                </div>
                 <div className="flex items-center h-full w-[65%]">
                     <img src={loginImge.src} alt="loginImage" />
                 </div>
             </div>
             <div className="w-[5px] bg-purple-light"></div>
             <div className="w-full sm:w-[45%] flex flex-col items-center justify-around bg-white">
+                <div className="block sm:hidden"><LogoFull width={80}/></div>
                 <div className="text-4xl font-bold text-gray-500">Giriş Yap</div>
                 <div className="w-[75%] h-[50%] flex flex-col justify-around">
                     <div>

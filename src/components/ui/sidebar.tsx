@@ -5,6 +5,7 @@ import SidebarButton from "./sidebarButton";
 import TableRowsIcon from "../icons/tableRowsIcon";
 import LibrariesIcon from "../icons/librariesIcon";
 import FolderIcon from "../icons/folderIcon";
+import LogoFull from "./logoFull";
 
 const Sidebar = () => {
     const [path,setPath] = useState("");
@@ -18,7 +19,7 @@ const Sidebar = () => {
     },[])
     return (
         <div className="w-[200px] h-full bg-white mr-3 shadow-md">
-            <div className="h-[90px] flex items-center justify-center my-3 font-bold text-3xl text-main-dark">LOGO</div>
+            <div className="h-[90px] flex items-center justify-center my-3"><LogoFull width={65} isFlexCol={true} textSize="text-xl"/></div>
             <div className="h-[80%] flex flex-col justify-between">
                 <div>
                     <div className="px-3"><div className="w-full h-[1.5px] bg-gray-200 mb-5"></div></div>
