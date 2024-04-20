@@ -7,6 +7,8 @@ import FolderAddPopup from "./folderAddPopup";
 import { useEffect, useState } from "react";
 import HomeIcon from "../icons/homeIcon";
 import FolderService from "@/services/folder/folderService";
+import DocumentAddIcon from "../icons/documentAddIcon";
+import DocumentAddPopup from "./documentAddPopup";
 
 interface features{
     setFolders:Function
@@ -14,6 +16,7 @@ interface features{
 
 const FolderPageHeader = (features:features) => {
     const [isClicked , setIsClicked] = useState(false);
+    const [isClickedToDocumentAdd , setIsClickedToDocumentAdd] = useState(false);
     const [folderName , setFolderName] = useState("")
     const userLibraryInfo: IUserLibraryDto = useSelector((state: any) => state.userLibraryInfo);
     const router = useRouter();
@@ -52,10 +55,14 @@ const FolderPageHeader = (features:features) => {
                     <div className="flex items-center pl-2 pt-2 text-xl font-bold ml-2">{folderName}</div>
                 </div>
                 
-                <div onClick={()=>{setIsClicked(true)}} className="flex items-center pt-2 cursor-pointer"><CreateNewFolderIcon className="w-8 h-8 fill-main-dark hover:fill-main-light" /></div>
+                <div className="flex">
+                    <div onClick={()=>{setIsClicked(true)}} className="flex items-center pt-2 cursor-pointer"><CreateNewFolderIcon className="w-8 h-8 fill-main-dark hover:fill-main-light" /></div>
+                    <div onClick={()=>{setIsClickedToDocumentAdd(true)}} className="flex items-center pt-2 cursor-pointer"><DocumentAddIcon className="w-8 h-8 fill-main-dark hover:fill-main-light" /></div>
+                </div>
             </div>
 
             <FolderAddPopup setFolders={features.setFolders} isClicked={isClicked} setIsClicked={setIsClicked}/>
+            <DocumentAddPopup setFiles={()=>{}} isClicked={isClickedToDocumentAdd} setIsClicked={setIsClickedToDocumentAdd}/>
         </>
 
     );
