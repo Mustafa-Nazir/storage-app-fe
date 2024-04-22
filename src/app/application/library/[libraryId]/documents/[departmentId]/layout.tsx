@@ -22,6 +22,7 @@ export default function DepartmentLayout({
     },[userLibraryInfo.role]);
 
     const departmentControl = () => {
+        if(!userLibraryInfo.role) return;
         const status = userLibraryInfo.role?.name == Roles.owner || libraryId == departmentId || userLibraryInfo.departments?.some(d => d._id == departmentId);
         if(status) return setIsLoaded(true);
 
