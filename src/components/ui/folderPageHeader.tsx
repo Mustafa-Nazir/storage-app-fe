@@ -23,6 +23,7 @@ const FolderPageHeader = (features:features) => {
     const params = useParams();
     const libraryId = params.libraryId as string;
     const folderId = params.folderId as string;
+    const departmentId = params.departmentId as string;
 
     useEffect(()=>{
         changeFolderName();
@@ -33,12 +34,15 @@ const FolderPageHeader = (features:features) => {
         setFolderName(name);
     };
     const getFolderName = async () => {
-        if (libraryId == folderId) return "Genel";
-        const department = userLibraryInfo.departments?.find(d => d._id == folderId);
+        if(folderId){
+            const result = await FolderService.GetFolderNameById(folderId);
+            if(result.success) return result.data as string;
+        }
+        
+        if (libraryId == departmentId) return "Genel";
+        const department = userLibraryInfo.departments?.find(d => d._id == departmentId);
         if (department) return department.name;
 
-        const result = await FolderService.GetFolderNameById(folderId);
-        if(result.success) return result.data as string;
         return "Folder Name";
     }
 

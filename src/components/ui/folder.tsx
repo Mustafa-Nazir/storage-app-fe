@@ -1,4 +1,4 @@
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import FolderIcon from "../icons/folderIcon";
 import { useState } from "react";
 import FolderOpenIcon from "../icons/folderOpenIcon";
@@ -9,9 +9,12 @@ interface features{
 }
 const Folder = (features:features) => {
     const [hover,setHover] = useState(false);
+    const params = useParams();
+    const departmentId = params.departmentId;
     const router = useRouter();
     const redirect = () => {
-        const basePath = window.location.pathname.split("/").slice(0,5).join("/");
+        const sliceAmount = departmentId ? 6 : 5;
+        const basePath = window.location.pathname.split("/").slice(0,sliceAmount).join("/");
         const path = `${basePath}/${features.folderId}`;
         router.push(path);
     }

@@ -1,4 +1,3 @@
-"use client"
 import Container from "@/components/ui/container";
 import Folder from "@/components/ui/folder";
 import FolderPageHeader from "@/components/ui/folderPageHeader";
@@ -8,14 +7,17 @@ import { changePageName } from "@/utilities/redux/slices/pageNameSlice";
 import store from "@/utilities/redux/store";
 import { useEffect, useState } from "react";
 
-export default function FolderPage({ params }: { params: { folderId: string } }) {
+interface features {
+    folderId:string
+}
+const FolderPageUI = (features:features) => {
     const [folders , setFolders] = useState([] as IFolder[]);
 
     useEffect(()=>{
         getFolders();
         store.dispatch(changePageName("Belgeler"));
     },[])
-    
+
     const mapFolders = () => {
         return (
             folders.map(folder => {
@@ -27,9 +29,10 @@ export default function FolderPage({ params }: { params: { folderId: string } })
     }
 
     const getFolders = async () => {
-        const result = await FolderService.GetAllByCurrentFolderId(params.folderId);
+        const result = await FolderService.GetAllByCurrentFolderId(features.folderId);
         setFolders(result.data as IFolder[]);
     }
+
     return (
         <Container>
             <FolderPageHeader setFolders={setFolders}/>
@@ -39,4 +42,6 @@ export default function FolderPage({ params }: { params: { folderId: string } })
             </div>
         </Container>
     );
-  }
+}
+
+export default FolderPageUI;

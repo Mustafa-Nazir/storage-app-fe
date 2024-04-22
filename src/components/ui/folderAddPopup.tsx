@@ -19,6 +19,7 @@ const FolderAddPopup = (features:features) => {
     const params = useParams();
     const libraryId = params.libraryId as string;
     const folderId = params.folderId as string;
+    const departmentId = params.departmentId as string;
 
     const inputControl = () => {
         const status = folderName.length <= 0;
@@ -29,9 +30,10 @@ const FolderAddPopup = (features:features) => {
     const addFolder = async () => {
         if(inputControl()) return;
 
+        const _folderId = folderId ? folderId : departmentId;
         const data:IFolder = {
             name:folderName,
-            currentFolderId:folderId,
+            currentFolderId:_folderId,
             libraryId:libraryId
         }
 
