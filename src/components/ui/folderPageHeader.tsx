@@ -11,7 +11,8 @@ import DocumentAddIcon from "../icons/documentAddIcon";
 import DocumentAddPopup from "./documentAddPopup";
 
 interface features{
-    setFolders:Function
+    setFolders:Function,
+    setFiles:Function
 }
 
 const FolderPageHeader = (features:features) => {
@@ -66,7 +67,7 @@ const FolderPageHeader = (features:features) => {
             </div>
 
             <FolderAddPopup setFolders={features.setFolders} isClicked={isClicked} setIsClicked={setIsClicked}/>
-            <DocumentAddPopup setFiles={()=>{}} isClicked={isClickedToDocumentAdd} setIsClicked={setIsClickedToDocumentAdd}/>
+            <DocumentAddPopup setFiles={features.setFiles} isClicked={isClickedToDocumentAdd} setIsClicked={setIsClickedToDocumentAdd}/>
         </>
 
     );
