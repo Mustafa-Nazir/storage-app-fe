@@ -6,6 +6,7 @@ import TableRowsIcon from "../icons/tableRowsIcon";
 import LibrariesIcon from "../icons/librariesIcon";
 import FolderIcon from "../icons/folderIcon";
 import LogoFull from "./logoFull";
+import SettingsControl from "../utilities/settingsControl";
 
 const Sidebar = () => {
     const [path,setPath] = useState("");
@@ -25,7 +26,7 @@ const Sidebar = () => {
                     <div className="px-3"><div className="w-full h-[1.5px] bg-gray-200 mb-5"></div></div>
                     <SidebarButton name="Duyurular" icon={TableRowsIcon} redirect={createPath("/announcements")}/>
                     <SidebarButton name="Belgeler" icon={FolderIcon} redirect={createPath("/documents")}/>
-                    <SidebarButton name="Ayarlar" icon={SettingsIcon} redirect={createPath("/settings")}/>
+                    <SettingsControl><SidebarButton name="Ayarlar" icon={SettingsIcon} redirect={createPath("/settings")}/></SettingsControl>
                 </div>
                 <div>
                     <SidebarButton name="Kütüphaneler" icon={LibrariesIcon} redirect={"/application/library"}/>
