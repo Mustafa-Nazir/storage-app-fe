@@ -10,6 +10,10 @@ import IUserLibraryDto from "@/models/library/IUserLibraryDto";
 import Roles from "@/utilities/constants/roles";
 import PdfPreviewPopup from "./pdfPreviewPopup";
 import { useState } from "react";
+import PasswordConfirmationPopup from "./passwordConfirmationPopup";
+import IFile from "@/models/file/IFile";
+import FileService from "@/services/file/fileService";
+import { toast } from "react-toastify";
 
 interface features {
     isClicked: boolean,
@@ -19,6 +23,10 @@ interface features {
 }
 const DocumentInfoPopup = (features: features) => {
     const [isClickedPreview, setIsClickedPreview] = useState(false);
+    const [isClickedPwConfirmDelete, setIsClickedPwConfirmDelete] = useState(false);
+    const [isClickedPwConfirmDownload, setIsClickedPwConfirmDownload] = useState(false);
+    const [password, setPassword] = useState("");
+
     const userInfo: IUserInfo = useSelector((state: any) => state.userInfo);
     const userLibraryInfo: IUserLibraryDto = useSelector((state: any) => state.userLibraryInfo);
     const buttonStyle = "flex cursor-pointer hover:bg-gray-200 px-3 py-1 rounded-sm my-0.5"
@@ -39,6 +47,55 @@ const DocumentInfoPopup = (features: features) => {
     const onClickedToPreview = () => {
         setIsClickedPreview(true);
     }
+
+    const downloadForEncrypted = () => {
+
+    }
+
+    const deleteForEncrypted = async () => {
+        const data:IFile = {
+            libraryId:features.fileDto.libraryId,
+            folderId:features.fileDto.folderId,
+            name:features.fileDto.name,
+            _id:features.fileDto._id,
+            password:password
+        } as IFile;
+
+        const result = await FileService.DeleteEncrypted(data);
+        if(!result.success) return toast.error(result.message);
+        toast.success(result.message);
+        setIsClickedPwConfirmDelete(false);
+        features.setIsClicked(false);
+    }
+
+    const deleteForUnencrypted = async () => {
+        const data:IFile = {
+            libraryId:features.fileDto.libraryId,
+            folderId:features.fileDto.folderId,
+            name:features.fileDto.name,
+            _id:features.fileDto._id
+        } as IFile
+
+        const result = await FileService.DeleteUnencrypted(data);
+        if(!result.success) return toast.error(result.message);
+        toast.success(result.message);
+        features.setIsClicked(false);
+    }
+
+    const deleteHandle = () => {
+        if (features.fileDto.encrypted) return setIsClickedPwConfirmDelete(true);
+
+        deleteForUnencrypted();
+    }
+
+    const DownloadButton = () => {
+        return (
+            <div className={buttonStyle}>
+                <DownloadIcon className="fill-main-dark" />
+                <div className="ml-1">İndir</div>
+            </div>
+        );
+    }
     return (
         <>
             <Popup title="Belge Hakkında" isClicked={features.isClicked} setIsClicked={features.setIsClicked}>
@@ -55,11 +112,11 @@ const DocumentInfoPopup = (features: features) => {
                         </div>
                     </div>
                     <div className="my-3 ml-7">
-                        <div className={buttonStyle}>
-                            <DownloadIcon className="fill-main-dark" />
-                            <a href={features.fileDto.url} download><div className="ml-1">İndir</div></a>
-                        </div>
-                        {deleteControl() && <div className={buttonStyle}>
+                        {
+                            features.fileDto.encrypted ? <div onClick={()=>{setIsClickedPwConfirmDownload(true)}}><DownloadButton/></div>
+                            :<a href={features.fileDto.url} download><DownloadButton/></a>
+                        }
+                        {deleteControl() && <div onClick={deleteHandle} className={buttonStyle}>
                             <DeleteIcon className="fill-red-500" />
                             <div className="ml-1">Sil</div>
                         </div>}
@@ -73,6 +130,8 @@ const DocumentInfoPopup = (features: features) => {
                 </div>
             </Popup>
             <PdfPreviewPopup isClicked={isClickedPreview} setIsClicked={setIsClickedPreview} fileName={features.fileDto.name} url={features.fileDto.url} />
+            <PasswordConfirmationPopup onClickedHandle={deleteForEncrypted} isClicked={isClickedPwConfirmDelete} setIsClicked={setIsClickedPwConfirmDelete} value={password} setValue={setPassword} />
+            <PasswordConfirmationPopup onClickedHandle={downloadForEncrypted} isClicked={isClickedPwConfirmDownload} setIsClicked={setIsClickedPwConfirmDownload} value={password} setValue={setPassword} />
         </>
 
     );
