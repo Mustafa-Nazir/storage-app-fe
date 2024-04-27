@@ -32,7 +32,7 @@ const Document = (features: features) => {
             <div onClick={() => { setIsClicked(true) }} className="flex flex-col items-center cursor-pointer hover:bg-gray-100 w-[100px] border-b-2 border-transparent hover:border-main-dark rounded-t-md hover:shadow-md">
                 {features.fileDto.encrypted && <div className="relative"><div className="absolute right-6 top-1"><LockIcon className="fill-gray-400 w-5 h-5"/></div></div>}
                 <DocumentIcon className={`w-14 h-14 ${documentColor}`} />
-                <div className="text-center">{getFileName()}</div>
+                <div className="text-center"><abbr className="no-underline" title={features.fileDto.name}>{getFileName()}</abbr></div>
             </div>
             <DocumentInfoPopup documentColor={documentColor} fileDto={features.fileDto} isClicked={isClicked} setIsClicked={setIsClicked}/>
         </>
