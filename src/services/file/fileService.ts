@@ -31,4 +31,10 @@ export default class FileService{
         const data:IResponseModel = await apiClient.post(url,file).then(res => res.data);
         return data;
     }
+
+    public static async DownloadEncryptedFile(file:IFile):Promise<IDataResponseModel<string>>{
+        const url = this.baseUrl + "downloadEncryptedFile";
+        const data:IDataResponseModel<string> = await apiClient.post(url,file).then(res => res.data);
+        return data;
+    }
 }

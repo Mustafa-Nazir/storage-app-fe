@@ -48,8 +48,17 @@ const DocumentInfoPopup = (features: features) => {
         setIsClickedPreview(true);
     }
 
-    const downloadForEncrypted = () => {
+    const downloadForEncrypted = async () => {
+        const data:IFile = {
+            _id:features.fileDto._id,
+            password:password
+        } as IFile;
 
+        const result = await FileService.DownloadEncryptedFile(data);
+        if(!result.success) return toast.error(result.message);
+        toast.success(result.message);
+        window.open(result.data,'_blank', 'noopener,noreferrer');
+        setIsClickedPwConfirmDownload(false);
     }
 
     const deleteForEncrypted = async () => {
