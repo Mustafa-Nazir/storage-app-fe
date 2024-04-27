@@ -12,7 +12,7 @@ const Popup = (features:features) => {
     }
 
     return features.isClicked && (
-        <div className="fixed top-0 left-0 h-full w-full">
+        <div className="fixed absolute top-0 left-0 h-full w-full">
             <div onClick={closePopup} className="absolute z-10 w-full h-full bg-black opacity-20"></div>
             <div className="absolute z-20 top-20 left-1/2 transform -translate-x-1/2  w-[90%] lg:w-[60%] bg-white rounded-lg border border-gray-300">
                 <div className="h-[30px] m-2 flex items-center justify-between px-2">
