@@ -37,4 +37,10 @@ export default class FileService{
         const data:IDataResponseModel<string> = await apiClient.post(url,file).then(res => res.data);
         return data;
     }
+
+    public static async GetTotalSizeByLibraryId(id:string):Promise<IDataResponseModel<number>>{
+        const url = `${this.baseUrl}getTotalSizeByLibraryId/${id}`;
+        const data:IDataResponseModel<number> = await apiClient.get(url).then(res => res.data);
+        return data;
+    }
 }

@@ -7,6 +7,7 @@ import LibrariesIcon from "../icons/librariesIcon";
 import FolderIcon from "../icons/folderIcon";
 import LogoFull from "./logoFull";
 import SettingsControl from "../utilities/settingsControl";
+import LibrarySizeBar from "./librarySizeBar";
 
 const Sidebar = () => {
     const [path,setPath] = useState("");
@@ -30,6 +31,7 @@ const Sidebar = () => {
                 </div>
                 <div>
                     <SidebarButton name="Kütüphaneler" icon={LibrariesIcon} redirect={"/application/library"}/>
+                    <LibrarySizeBar/>
                 </div>
             </div>
         </div>

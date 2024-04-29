@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 import IFile from "@/models/file/IFile";
 import FileService from "@/services/file/fileService";
 import { toast } from "react-toastify";
+import store from "@/utilities/redux/store";
+import { increaseLibraryTotalSize } from "@/utilities/redux/slices/libraryTotalSizeSlice";
 
 interface features {
     isClicked: boolean,
@@ -70,6 +72,7 @@ const DocumentAddPopup = (features: features) => {
 
         features.setFiles((prev:any) => [...prev , result.data])
         features.setIsClicked(false);
+        store.dispatch(increaseLibraryTotalSize(file?.size));
         return toast.success(result.message);
     }
 
