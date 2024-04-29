@@ -8,6 +8,7 @@ import RegexPatterns from "@/utilities/regex/regexPatterns";
 import { toast } from "react-toastify";
 import IUserWaitingList from "@/models/userWaitingList/IUserWaitingList";
 import UserWaitingListService from "@/services/userWaitingList/userWaitingListService";
+import Roles from "@/utilities/constants/roles";
 
 const PersonAddManagement = () => {
     const [email , setEmail] = useState("");
@@ -64,7 +65,7 @@ const PersonAddManagement = () => {
 
     return (
         <div className="mt-5 flex flex-col items-center">
-            <div className="grid grid-cols-3 w-full">
+            <div className="grid grid-rows-3 sm:grid-rows-none sm:grid-cols-3 w-full">
                 <div className="px-2">
                     <div className="text-center mb-2">Kullanıcı e-mail</div>
                     <Input placeholder="" setValue={setEmail} type="text" value={email} errorState={emailError} errorMessage="Geçerli bir email adresi girin"/>
@@ -80,7 +81,7 @@ const PersonAddManagement = () => {
                 <div className="px-2">
                     <div className="text-center mb-2">Rol</div>
                     <Select setValue={setRole} value={role}>
-                        {library.roles?.map((role,index) => {
+                        {library.roles?.filter(r => r.name != Roles.owner).map((role,index) => {
                             return <option key={index}>{role.name}</option>
                         })}
                     </Select>
