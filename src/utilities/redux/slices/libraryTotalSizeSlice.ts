@@ -10,8 +10,11 @@ export const libraryTotalSizeSlice = createSlice({
         },
         increaseLibraryTotalSize:(state,action) => {
             state.size += action.payload;
+        },
+        reduceLibraryTotalSize:(state,action) => {
+            state.size -= action.payload;
         }
     }
 })
 
-export const {setLibraryTotalSize , increaseLibraryTotalSize} = libraryTotalSizeSlice.actions;
+export const {setLibraryTotalSize , increaseLibraryTotalSize , reduceLibraryTotalSize} = libraryTotalSizeSlice.actions;

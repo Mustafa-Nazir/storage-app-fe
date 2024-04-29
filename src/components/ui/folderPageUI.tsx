@@ -37,7 +37,7 @@ const FolderPageUI = (features:features) => {
         return (
             files.map(file => {
                 return (
-                    <Document key={file._id} fileDto={file}/>
+                    <Document setDocuments={setFiles} key={file._id} fileDto={file}/>
                 );
             })
         )

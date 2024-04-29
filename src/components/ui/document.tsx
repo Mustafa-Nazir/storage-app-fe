@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import DocumentIcon from "../icons/documentIcon";
 import DocumentInfoPopup from "./documentInfoPopup";
 import IFileDto from "@/models/file/IFileDto";
 import LockIcon from "../icons/lockIcon";
 
 interface features {
-    fileDto:IFileDto
+    fileDto:IFileDto,
+    setDocuments:Dispatch<SetStateAction<IFileDto[]>>
 }
 const Document = (features: features) => {
     const [isClicked, setIsClicked] = useState(false);
@@ -34,7 +35,7 @@ const Document = (features: features) => {
                 <DocumentIcon className={`w-14 h-14 ${documentColor}`} />
                 <div className="text-center"><abbr className="no-underline" title={features.fileDto.name}>{getFileName()}</abbr></div>
             </div>
-            <DocumentInfoPopup documentColor={documentColor} fileDto={features.fileDto} isClicked={isClicked} setIsClicked={setIsClicked}/>
+            <DocumentInfoPopup setDocuments={features.setDocuments} documentColor={documentColor} fileDto={features.fileDto} isClicked={isClicked} setIsClicked={setIsClicked}/>
         </>
 
     );

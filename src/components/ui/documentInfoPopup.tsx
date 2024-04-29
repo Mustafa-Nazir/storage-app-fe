@@ -9,17 +9,20 @@ import { useSelector } from "react-redux";
 import IUserLibraryDto from "@/models/library/IUserLibraryDto";
 import Roles from "@/utilities/constants/roles";
 import PdfPreviewPopup from "./pdfPreviewPopup";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import PasswordConfirmationPopup from "./passwordConfirmationPopup";
 import IFile from "@/models/file/IFile";
 import FileService from "@/services/file/fileService";
 import { toast } from "react-toastify";
+import store from "@/utilities/redux/store";
+import { reduceLibraryTotalSize } from "@/utilities/redux/slices/libraryTotalSizeSlice";
 
 interface features {
     isClicked: boolean,
     setIsClicked: Function,
     fileDto: IFileDto,
-    documentColor: string
+    documentColor: string,
+    setDocuments:Dispatch<SetStateAction<IFileDto[]>>
 }
 const DocumentInfoPopup = (features: features) => {
     const [isClickedPreview, setIsClickedPreview] = useState(false);
@@ -61,6 +64,12 @@ const DocumentInfoPopup = (features: features) => {
         setIsClickedPwConfirmDownload(false);
     }
 
+    const removeDocument = (fileDto:IFileDto) => {
+        const id = fileDto._id;
+        features.setDocuments(prev => prev.filter(d => d._id != id));
+        store.dispatch(reduceLibraryTotalSize(fileDto.size));
+    }
+
     const deleteForEncrypted = async () => {
         const data:IFile = {
             libraryId:features.fileDto.libraryId,
@@ -75,6 +84,7 @@ const DocumentInfoPopup = (features: features) => {
         toast.success(result.message);
         setIsClickedPwConfirmDelete(false);
         features.setIsClicked(false);
+        removeDocument(features.fileDto);
     }
 
     const deleteForUnencrypted = async () => {
@@ -89,6 +99,7 @@ const DocumentInfoPopup = (features: features) => {
         if(!result.success) return toast.error(result.message);
         toast.success(result.message);
         features.setIsClicked(false);
+        removeDocument(features.fileDto);
     }
 
     const deleteHandle = () => {

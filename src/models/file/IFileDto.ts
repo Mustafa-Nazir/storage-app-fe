@@ -7,5 +7,6 @@ export default interface IFileDto{
     libraryId:string,
     departmentId:string,
     date:Date,
-    encrypted:boolean
+    encrypted:boolean,
+    size:number
 } 
