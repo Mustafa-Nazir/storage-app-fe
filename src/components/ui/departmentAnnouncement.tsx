@@ -42,9 +42,11 @@ const DepartmentAnnouncement = (features:features) => {
             })}
         </div>
     ) : (
-        <div className="relative">
-        <div onClick={onClickBack} className="absolute left-2 top-2.5 cursor-pointer"><ArrowBackIcon className="fill-main-dark hover:fill-main-light"/></div>
-        <AnnouncementTable setAnnouncements={features.setAnnouncements} announcements={features.announcements}/>
+        <div>
+            <div className="relative">
+                <div onClick={onClickBack} className="absolute left-2 top-2.5 cursor-pointer"><ArrowBackIcon className="fill-main-dark hover:fill-main-light"/></div>
+            </div>
+            <AnnouncementTable setAnnouncements={features.setAnnouncements} announcements={features.announcements}/>
         </div>
         
     );
