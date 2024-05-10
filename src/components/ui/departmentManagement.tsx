@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import DynamicInput from "./dynamicInput";
 import Button from "./button";
 import { toast } from "react-toastify";
+import store from "@/utilities/redux/store";
+import { addUserLibraryInfo } from "@/utilities/redux/slices/userLibraryInfoSlice";
 
 interface features{
     setIsClicked:Function
@@ -49,9 +51,16 @@ const DepartmentManagement = (features:features) => {
 
         const result = await LibraryService.AddDepartments(_library);
         if(!result.success) return toast.error(result.message);
+
+        await updateDepartments();
         features.setIsClicked(false);
         return toast.success(result.message);
     }
+
+    const updateDepartments = async () => {
+        const result = await LibraryService.GetUserDepartmentAndRole(getLibraryId());
+        store.dispatch(addUserLibraryInfo(result.data));
+    };
 
     const departmentsControl = (_departments:ILibrary["departments"]):boolean => {
         const lengthControl = _departments?.some(dep => dep.name.length <= 0);

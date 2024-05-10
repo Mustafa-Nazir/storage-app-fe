@@ -24,6 +24,7 @@ const NotificationManagement = () => {
         const result = await UserWaitingListService.AcceptRequest(data);
         if(!result.success) return toast.error(result.message);
         setLibraryRequest(prev => prev.filter(p => p._id != id));
+        if(window.location.pathname == "/application/library") window.location.reload();
     }
 
     const rejectRequest = async (id:string) => {

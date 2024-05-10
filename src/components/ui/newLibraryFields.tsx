@@ -31,6 +31,7 @@ const NewLibraryFields = (features:features) => {
         features.setIsClicked(false);
         if(!result.success) return toast.error(result.message);
 
+        data._id = result.data;
         features.setLibraries((prev:ILibrary[]) => [...prev,data]);
         return toast.success(result.message);
     }

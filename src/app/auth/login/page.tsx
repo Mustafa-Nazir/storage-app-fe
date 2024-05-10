@@ -76,7 +76,7 @@ export default function Login() {
                             errorState={passwordError}
                             errorMessage="Şifre alanı boş olamaz."
                         />
-                        <div className="flex justify-end"><TextButton name="Şifremi Unuttum" onClick={()=>{}} textColor="text-purple-dark"/></div>
+                        {/* <div className="flex justify-end"><TextButton name="Şifremi Unuttum" onClick={()=>{}} textColor="text-purple-dark"/></div> */}
                     </div>
                     <div className="flex justify-center">
                         <div className="w-[150px]"><Button name="Giriş Yap" onClick={login} /></div>
