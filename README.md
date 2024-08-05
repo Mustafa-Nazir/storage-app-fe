@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📄About The Project
+This project is a **SaaS** application that allows institutions to store and manage their data.
 
-## Getting Started
+# 💻Used Technologies
+|Technologies|
+|:---:|
+|Next.js|
+|React|
+|Tailwind CSS|
+|Redux|
+|TypeScript|
+|Git|
 
-First, run the development server:
+# 🔑Features
+* Login/Register
+* Every user can create their library and invite their team members.
+* A notification is sent to users to accept or reject the library invitation.
+* The project has role and department-based authorization. There are three roles in the project (owner, admin, user), and departments can be created dynamically.
+* Users can create announcements and share them publicly or within their department.
+* Users can create folders in the public or department folders and upload their files.
+* The dashboard section has a daily file upload graphic, as well as graphics showing file size and amount by user and department.
+* The owner role can see all department folders, files, and announcements, and can delete any file or announcement.
+* The admin and user roles can see only their department's folders, files and announcements. Admins can delete them, while users can delete only their own.
+* The user roles can't access the dashboard and settings sections.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# 📋UI
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Login
+![](ApplicationImages/login.PNG)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Register
+![](ApplicationImages/register.PNG)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Library Selection
+![](ApplicationImages/library.PNG)
 
-## Learn More
+## Announcements
+### Public Announcements
+![](ApplicationImages/announcement1.PNG)
 
-To learn more about Next.js, take a look at the following resources:
+### Department Announcements
+![](ApplicationImages/announcement2.PNG)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Adding New Announcement
+![](ApplicationImages/announcement3.PNG)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Files
 
-## Deploy on Vercel
+### Folder Selection (public or department folder)
+![](ApplicationImages/files1.PNG)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Public Folder
+![](ApplicationImages/files2.PNG)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### PDF Preview
+![](ApplicationImages/files3.PNG)
+
+## Dashboard
+![](ApplicationImages/dashboard.PNG)
+
+## Settings
+![](ApplicationImages/settings.PNG)
